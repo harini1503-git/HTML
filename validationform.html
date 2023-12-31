@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Validation form</title>
+        <style>
+            body{
+                margin: 30px;
+            }
+            input{
+                padding: 10px;
+            }
+        </style>
+        <script>
+            function validationform(){
+                var name= document.myform.name.value;
+                var password= document.myform.password.value;
+                var email= document.myform.email.value;
+                var phonenumber= document.myform.phonenumber.value;
+                var emailpattern= /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                var phonenumberpattern= /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+
+                if(name== null || name==""){
+                    alert("Name can't be blank")
+                    return false;
+                }
+                else if(password.length<6){
+                    alert("Password must be at least 6 characters long.");
+                    return false;
+                }
+                else if(!email.match(emailpattern)){
+                    alert("Wrong Email Please check");
+                    return false;
+                }
+                else if(!phonenumber.match(phonenumberpattern)){
+                    alert("Wrong phone number please check");
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>FILL THE FORM</h1>
+        <form name="myform" method="post" onsubmit="return validationform()">
+        Name:<br/>
+        <input type="text" name="name"><br/><br/>
+        Password:<br/>
+        <input type="password" name="password"><br/><br/>
+        Email:<br/>
+        <input type="email" name="email"><br/><br/>
+        PhoneNumber:<br/>
+        <input type="number" name="phonenumber"><br/><br/>
+        <input type="submit" value="Submit"><br/><br/>
+    </form>
+    </body>
+</html>
